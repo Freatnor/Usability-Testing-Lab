@@ -1,5 +1,6 @@
 package com.charlesdrews.usabilitytestinglab;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -19,11 +20,11 @@ public class DetailActivity extends AppCompatActivity {
 
         // if the sign was not added to the intent, getStringExtra() would return null
         if (selectedSign != null) {
+            ((DetailFragment) getSupportFragmentManager().findFragmentById(R.id.detail_fragment)).updateWebView(selectedSign);
+//            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.horoscopedates.com/zodiac-signs/" + selectedSign));
+//            startActivity(intent);
 
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.horoscopedates.com/zodiac-signs/" + selectedSign));
-            startActivity(intent);
-
-            //TODO rather than launch the link externally in the broswer, launch in the detail fragment's webview
+            //TODO rather than launch the link externally in the browser, launch in the detail fragment's webview
             //TODO - (hint: you'll need to get a reference to the detail fragment that's loaded in this activity)
         }
     }
